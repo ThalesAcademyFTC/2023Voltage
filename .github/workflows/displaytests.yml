@@ -27,9 +27,9 @@ jobs:
           # Artifact name
           name: github-pages
           # Path of the directory containing the static assets.
-          path: /home/runner/work/2023Voltage/2023Voltage/TeamCode/build/reports/tests/testDebugUnitTest
+          path: /home/runner/work/2023-BNI/2023-BNI/TeamCode/build/reports/tests/testDebugUnitTest
           # Duration after which artifact will expire in days.
-          retention-days: 7
+          retention-days: 14
   deploy:
     
     needs: build
