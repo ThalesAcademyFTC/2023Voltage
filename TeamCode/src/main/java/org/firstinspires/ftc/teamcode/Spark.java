@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -43,11 +44,21 @@ public class Spark {
 
     // Now, below you can define any global variables that you want to use in this library file.
 
-    private DcMotor motorFrontLeft, motorFrontRight, motorBackLeft, motorBackRight;
+    public DcMotor motorFrontLeft, motorFrontRight, motorBackLeft, motorBackRight;
 
-    private DcMotor[] forward, left, right;
+    public DcMotor armMotor, spinnyMotor;
+
+    public Servo clawServo;
 
     private IMU imu;
+
+    // Put CONSTANTS here
+
+    /** Constant for the claw open position */
+    static final double OPEN_CLAW_POSITION = 0.6;
+
+    /** Constant for the close claw position */
+    static final double CLOSE_CLAW_POSITION = 0.3;
 
     /**
      * The CONSTRUCTOR for the library class. This constructor pulls the HardwareMap from the opmode
@@ -94,18 +105,6 @@ public class Spark {
                 motorFrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
                 motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
-                //Next, add those motors to their arrays
-
-                //The forward array contains all of the motors that need to move forward for the robot
-                //to move forward
-                forward = new DcMotor[]{ motorFrontLeft, motorFrontRight, motorBackLeft, motorBackRight };
-
-                //The left array contains the motors that need to move forward for the robot to move left
-                left = new DcMotor[]{ motorFrontRight, motorBackRight };
-
-                //The right array contains the motors that need to move forward for the robot to move right
-                right = new DcMotor[] { motorFrontLeft, motorBackLeft };
-
                 //Here would go any additional hardware devices for the robot
 
                 // Map the imu to the hardware device
@@ -120,6 +119,14 @@ public class Spark {
                 );
 
                 imu.initialize( parameters );
+
+                //Add arm mechanism hardware devices
+
+                armMotor = hwMap.dcMotor.get( "armMotor" );
+                clawServo = hwMap.servo.get( "clawServo" );
+
+                spinnyMotor = hwMap.dcMotor.get( "spinnyMotor" );
+
 
 
 
@@ -185,6 +192,38 @@ public class Spark {
      */
     public double getHeading() {
         return imu.getRobotYawPitchRollAngles().getYaw( AngleUnit.RADIANS );
+    }
+
+    /**
+     * Sets the arm motor to the given power
+     * @param power the power to send to the arm motor
+     */
+    public void setArmMotor( double power ) {
+        armMotor.setPower( power );
+    }
+
+    /**
+     * Opens the clawServo using the CONSTANT OPEN_CLAW_POSITION
+     * Defined near top of Spark
+     */
+    public void openClaw() {
+        clawServo.setPosition( OPEN_CLAW_POSITION );
+    }
+
+    /**
+     * Closes the clawServo using the CONSTANT CLOSE_CLAW_POSITION
+     * Defined near top of Spark
+     */
+    public void closeClaw() {
+        clawServo.setPosition( CLOSE_CLAW_POSITION );
+    }
+
+    /**
+     * Set the claw servo to the given position
+     * @param position the position to set the claw servo to
+     */
+    public void setClawServo( double position ) {
+        clawServo.setPosition( position );
     }
 
 }
