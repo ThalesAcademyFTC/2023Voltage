@@ -39,10 +39,10 @@
     -->
 
     <LynxUsbDevice
-        name="Control Hub Portal"
-        serialNumber="(embedded)" parentModuleAddress="5">
+        name="Expansion Hub Portal 1"
+        serialNumber="EHP" parentModuleAddress="5">
 
-        <LynxModule name="Control Hub" port="5">
+        <LynxModule name="Hub" port="2">
 
             <!-- The built-in IMU is always port="0" bus="0" -->
             <LynxEmbeddedIMU name="imu" port="0" bus="0" />
@@ -70,18 +70,28 @@
 
             ************************************************************* -->
 
-            <goBILDA5202SeriesMotor name="motorFrontLeft" port="0" />
-            <goBILDA5202SeriesMotor name="motorFrontRight" port="3" />
-            <goBILDA5202SeriesMotor name="motorBackLeft" port="2" />
-            <goBILDA5202SeriesMotor name="motorBackRight" port="1" />
+            <Motor name="motor1"  port="0" /> <!-- Yellow -->
+            <Motor name="motor2"  port="1" /> <!-- Yellow -->
+            <Motor name="motor3"  port="2" /> <!-- Yellow -->
+            <Motor name="motor4"  port="3" /> <!-- Yellow -->
 
-            <!--
 
-            REV SparkMinis plug into a servo port, and allow you to use a 12V
-            gearmotor as you would a ContinuousRotationServo. When used from
-            your code they are of type DcMotorSimple.
+            <!-- *************************************************************
 
-            -->
+            Servos are pretty straightforward. Ports are numbered 0-5
+
+            Configuring a servo as a ContinuousRotationServo in this file
+            will present an interface in software that "feels" more like a
+            DCMotor for servos that are, or are able to be put into continuous
+            rotation mode.
+
+            See com.qualcomm.robotcore.hardware.CRServo in the SDK for more
+            details.
+
+            ************************************************************* -->
+
+            <Servo name="servo1" port="0" />
+
 
             <!-- *************************************************************
 
@@ -104,23 +114,8 @@
             signal, and set "port" appropriately.
 
             ************************************************************* -->
-            <Servo name="clawServo" port="0" />
 
-        </LynxModule>
-
-        <LynxModule name="Expansion Hub 3" port="3">
-
-            <!-- *************************************************************
-
-            Add devices here that are plugged into the secondary REV expansion
-            hub, following the syntax above.
-
-
-
-            ************************************************************* -->
-
-            <goBILDA5202SeriesMotor name="armMotor" port="0" />
-            <goBILDA5202SeriesMotor name="spinnyMotor" port="3" />
+            <DigitalDevice name="armTouch" port="1" />
 
         </LynxModule>
     </LynxUsbDevice>

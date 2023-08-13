@@ -144,6 +144,16 @@ public class Spark {
     }
 
     /**
+     * Set motor power for all drivetrain motors on robot to 0
+     */
+    public void rest() {
+        motorBackLeft.setPower( 0 );
+        motorBackRight.setPower( 0 );
+        motorFrontLeft.setPower( 0 );
+        motorFrontRight.setPower( 0 );
+    }
+
+    /**
      * This function controls movement for the robot.
      * @param x the x speed value
      * @param y the y speed value
