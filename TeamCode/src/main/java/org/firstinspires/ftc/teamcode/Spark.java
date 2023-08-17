@@ -81,6 +81,20 @@ public class Spark {
     }
 
     /**
+     * This constructor is used for testing the hardwareMap and drivetrain
+     * @param hardwareMap the hardwareMap being tested
+     * @param drivetrain the drivetrain being tested
+     */
+    public Spark( HardwareMap hardwareMap, Drivetrain drivetrain ) {
+
+        this.hwMap = hardwareMap;
+
+        this.drive = drivetrain;
+
+        setupHardware();
+    }
+
+    /**
      * This function maps the variables declared above to a specific hardware object,
      * as defined by the configuration on the driver hub
      * Note: This function can only be used inside the library, since it is private
