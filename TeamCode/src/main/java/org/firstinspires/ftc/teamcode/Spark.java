@@ -60,6 +60,9 @@ public class Spark {
     /** Constant for the close claw position */
     static final double CLOSE_CLAW_POSITION = 0.3;
 
+    /** Encoder ticks for an INCH */
+    static final double INCH_TICKS = 40;
+
     /**
      * The CONSTRUCTOR for the library class. This constructor pulls the HardwareMap from the opmode
      * and runs the setupHardware function
@@ -116,8 +119,7 @@ public class Spark {
 
                 //Next, reverse motors that need to spin the other direction
                 // Tip: All motors should move the robot forward if set to power 1
-                motorFrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                motorBackLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
                 //Here would go any additional hardware devices for the robot
 
@@ -248,6 +250,16 @@ public class Spark {
      */
     public void setClawServo( double position ) {
         clawServo.setPosition( position );
+    }
+
+    // AUTON functions!
+
+    public void moveDistance ( double x, double y, double turn, double distance ) {
+
+        // Use encoder ticks to move in a certain direction. Somehow calculate the ticks needed.
+
+
+
     }
 
 }
