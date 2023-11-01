@@ -31,7 +31,7 @@ public class FieldCentricTele extends OpMode {
 
         //First, define some key variables for movement
         double y = -gamepad1.left_stick_y; // Y gamepad is reversed, so reverse this value
-        double x = gamepad1.left_stick_x * STRAFE_FACTOR; // Scaling to fix
+        double x = gamepad1.left_stick_x; // Scaling to fix
         double turn = gamepad1.right_stick_x; // Turn value
 
         // Resets the robot yaw orientation. Typically will not be used unless an emergency
@@ -48,6 +48,8 @@ public class FieldCentricTele extends OpMode {
         // Creates an adjusted Y value based on the field position
         double adjustedY = x * Math.sin(-heading) + y * Math.cos(-heading);
 
+        //Adjust for imperfect strafing
+        adjustedX *= STRAFE_FACTOR;
 
         //Now, set motor powers using x, y, and turn variables
         robot.move( adjustedX, adjustedY, turn );
