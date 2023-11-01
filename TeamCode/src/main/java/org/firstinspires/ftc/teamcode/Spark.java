@@ -19,7 +19,7 @@ public class Spark {
      * name set in the configuration
      */
     private HardwareMap hwMap;
-
+          
     /**
      * An ENUM is a custom variable type that we can define the options for
      * This variable can be declared as a type Drivetrain, and then can be set to one of the options
