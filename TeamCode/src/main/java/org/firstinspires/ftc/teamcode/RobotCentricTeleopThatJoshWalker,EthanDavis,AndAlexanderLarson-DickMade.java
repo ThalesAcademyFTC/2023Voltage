@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Spark;
 
 @TeleOp()
-public class RobotCentricTeleopThatJoshWalker,EthanDavis,AndAlexanderLarson-DickMade extends OpMode {
+public class RobotCentricTeleopThatJoshWalkerEthanDavisAndAlexanderLarsonDickMade extends OpMode {
 
     Spark robot;
     //explain strafe factor here
@@ -40,24 +40,46 @@ public class RobotCentricTeleopThatJoshWalker,EthanDavis,AndAlexanderLarson-Dick
         //Now, set motor powers using x, y, and turn variables
         robot.move( x, y, turn ); /*pls explain how this work ??*/
         
-        if (gamepad2.right_bumper){
-            robot.claw(1);
-        }
-        if (gamepad2.left_bumper){
-            robot.claw(0);
+        
 
+        if (gamepad2.right_trigger > 0.5) {
+            robot.servoClose();
+        } else robot.servoPrepare();
+            //Moves arm down
+    
+        if (gamepad2.dpad_up) {
+            robot.armMotor.setPower(1);
+        } else{
+            robot.armMotor.setPower(0);
+        } 
+
+        if (-gamepad1.left_stick_x){
+            //robot.move();
+            //Movement to go right
+        }
+        if (gamepad1.left_stick_x){
+            //robot.move();
+            //Movement to go left
+        }
+        if(gamepad1.left_stick_y){
+            //robot.move();
+            //Movement to go up   
+        }
+        if(gamepad1.left_stick_y){
+            //robot.move();
+            //Movement to go down
         }
     
-    
-        if (gamepad2.right_stick_y > 0.3){
-            robot.ArmUp(0.5);
-        }
-        if (gamepad2.right_stick_y < -0.3){
-            robot.ArmDown(-0.5);
-    
-        }
     
 
-    }    
-}
+//keep this at end
+        if (gamepad1.atRest()) robot.rest(){   
+
+    }
+    
+    
+    }  
+
+}  
+
 
