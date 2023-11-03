@@ -5,7 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp()
+<<<<<<< Updated upstream:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/TeleopFileThatNeedsBetterName.java
 public class TeleopFileThatNeedsBetterName extends OpMode {
+=======
+public class RobotCentricTeleopThatJoshWalkerEthanDavisAndAlexanderLarsonDickMade extends OpMode {
+>>>>>>> Stashed changes:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotCentricTeleopThatJoshWalker,EthanDavis,AndAlexanderLarson-DickMade.java
 
     Spark robot;
     //explain strafe factor here
@@ -54,6 +58,7 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
             robot.ArmDown(-0.5);
     
         }
+        
     
 
     }    
