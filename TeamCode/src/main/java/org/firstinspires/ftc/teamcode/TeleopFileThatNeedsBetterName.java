@@ -4,10 +4,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Spark;
-
 @TeleOp()
-public class RobotCentricTeleopThatJoshWalker,EthanDavis,AndAlexanderLarson-DickMade extends OpMode {
+public class TeleopFileThatNeedsBetterName extends OpMode {
 
     Spark robot;
     //explain strafe factor here
