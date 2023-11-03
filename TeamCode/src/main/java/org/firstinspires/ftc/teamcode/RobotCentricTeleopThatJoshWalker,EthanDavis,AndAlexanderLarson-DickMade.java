@@ -40,20 +40,20 @@ public class RobotCentricTeleopThatJoshWalker,EthanDavis,AndAlexanderLarson-Dick
         //Now, set motor powers using x, y, and turn variables
         robot.move( x, y, turn ); /*pls explain how this work ??*/
         
-        if (gamepad1.right_bumper){
+        if (gamepad2.right_bumper){
             robot.claw(1);
         }
-        if (gamepad1.left_bumper){
+        if (gamepad2.left_bumper){
             robot.claw(0);
 
         }
     
     
-        if (gamepad1.right_trigger > 0.3){
-            robot.arm_up(0.5);
+        if (gamepad2.right_stick_y > 0.3){
+            robot.ArmUp(0.5);
         }
-        if (gamepad1.left_trigger > 0.3){
-            robot.arm_down(-0.5);    
+        if (gamepad2.right_stick_y < -0.3){
+            robot.ArmDown(-0.5);
     
         }
     
