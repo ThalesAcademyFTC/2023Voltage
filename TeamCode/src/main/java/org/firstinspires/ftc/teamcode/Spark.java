@@ -50,6 +50,8 @@ public class Spark {
 
     public Servo clawServo;
 
+    public Servo smallArmServo;
+
     private IMU imu;
 
     // Put CONSTANTS here
@@ -140,6 +142,7 @@ public class Spark {
 
                 armMotor = hwMap.dcMotor.get( "armMotor" );
                 clawServo = hwMap.servo.get( "clawServo" );
+                smallArmServo = hwMap.servo.get( "smallArmServo" );
 
                 spinnyMotor = hwMap.dcMotor.get( "spinnyMotor" );
 
@@ -243,6 +246,7 @@ public class Spark {
     public void closeClaw() {
         clawServo.setPosition( CLOSE_CLAW_POSITION );
     }
+    
 
     /**
      * Set the claw servo to the given position
@@ -251,7 +255,7 @@ public class Spark {
     public void setClawServo( double position ) {
         clawServo.setPosition( position );
     }
-
+     
     // AUTON functions!
 
     public void moveDistance ( double x, double y, double turn, double distance ) {

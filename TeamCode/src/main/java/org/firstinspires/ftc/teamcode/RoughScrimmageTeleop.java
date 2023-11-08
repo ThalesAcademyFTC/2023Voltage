@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp()
 
+
 public class TeleopFileThatNeedsBetterName extends OpMode {
 
     Spark robot;
@@ -38,22 +39,36 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
        
         //Now, set motor powers using x, y, and turn variables
         
+        //Movement
         robot.move( x, y, turn);
         
-        //Claw op
-        if (gamepad2.right_trigger > 0.5) {
-            robot.clawServo(0.3);
-        } else robot.clawServo(-0.3);
-
-        //Moves arm up
-        if (gamepad2.right_stick_y > 0.3){
-           robot.setArmMotor(-0.5);
+        //Claw open/close
+        if (gamepad2.right_trigger > 0.3) {
+            robot.openClaw();
+        
+        } else if (gamepad2.left_trigger < 0.3) {
+            robot.closeClaw();
+        
         }
 
-        //Moves arm down
-        if (gamepad2.right_stick_y < -0.3){
-          robot.setArmMotor(0.5);
 
+        //small arm
+        if ( gamepad2.right_bumper() ) {
+            robot.smallArmServo(0.5);
+            
+      } else if ( gamepad2.left_bumper() ) {
+            robot.smallArmServo(-0.5);
+        
+        }
+
+        
+        //Moves arm up
+        if ( gamepad2.right_stick_y > 0.3 ){
+           robot.setArmMotor(0.5);
+        
+        } else if ( gamepad2.right_stick_y < -0.3 ){
+            robot.setArmMotor(-0.5);
+        
         }
 
 
@@ -64,3 +79,4 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
     }  
 
 }
+//among us 
