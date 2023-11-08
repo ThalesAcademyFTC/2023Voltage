@@ -40,6 +40,7 @@ public class RobotCentricTeleopThatJoshWalkerEthanDavisAndAlexanderLarsonDickMad
         //Now, set motor powers using x, y, and turn variables
         robot.move( x, y, turn ); /*pls explain how this work ??*/
         
+<<<<<<< HEAD
         if (gamepad2.right_bumper){
             robot.closeClaw(1);
         }
@@ -51,8 +52,28 @@ public class RobotCentricTeleopThatJoshWalkerEthanDavisAndAlexanderLarsonDickMad
     
         if (gamepad2.right_stick_y > 0.3){
             robot.ArmUp(0.5);
+=======
+        
+        //claw move
+        if (gamepad2.right_trigger > 0.5) {
+            robot.servoClose();
+        } else robot.servoprepare()
+        
+        //arm move
+        if (gamepad2.dpad_up) {
+            robot.armMotor.setPower(1);
+        } else {
+            robot.armMotor.setPower(0);
+        }              
+        
+        //Moves arm up
+        if (gamepad2.right_stick_y > 0.3){
+           // robot.ArmUp(-0.5);
+>>>>>>> 1af2c31e18861227828ca7b682dd23ac49ca1208
         }
+        //Moves arm down
         if (gamepad2.right_stick_y < -0.3){
+<<<<<<< HEAD
             robot.ArmDown(-0.5);
         }
         //The comments means we will figure it out later;
@@ -72,8 +93,24 @@ public class RobotCentricTeleopThatJoshWalkerEthanDavisAndAlexanderLarsonDickMad
                       
    
         
+=======
+          //  robot.ArmDown(0.5);
+    
+        }
+        
+    
+
+//keep this at end
+        if (gamepad1.atRest()) robot.rest();
+    
+    }  
+
+} 
+>>>>>>> 1af2c31e18861227828ca7b682dd23ac49ca1208
 
     }    
 }
 }
 
+//men 
+//yep
