@@ -37,32 +37,26 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
         double turn = gamepad1.right_stick_x; // Turn value
        
         //Now, set motor powers using x, y, and turn variables
-        robot.move( x, y, turn ); /*pls explain how this work ??*/
         
+        robot.move(x,y,turn);
         
-        //claw move
+        //Claw op
         if (gamepad2.right_trigger > 0.5) {
-            robot.servoClose();
-        } else robot.servoPrepare();
-        
-        //arm move
-        if (gamepad2.dpad_up) {
-            robot.armMotor.setPower(1);
-        } else {
-            robot.armMotor.setPower(0);
-        }              
-        
+            robot.clawServo(0.3);
+        } else robot.clawServo(-0.3);
+
         //Moves arm up
         if (gamepad2.right_stick_y > 0.3){
-           //robot.ArmUp(-0.5);
+           robot.setArmMotor(-0.5);
         }
+
         //Moves arm down
         if (gamepad2.right_stick_y < -0.3){
-          //  robot.ArmDown(0.5);
-    
+          robot.setArmMotor(0.5);
+
         }
-        
-    
+
+
 
 //keep this at end
         if (gamepad1.atRest()) robot.rest();
@@ -70,7 +64,5 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
     }  
 
 } 
+////////
 
-
-//men men men menemenmenmenmenmene
-//yep
