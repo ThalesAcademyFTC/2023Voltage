@@ -43,7 +43,7 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
         //claw move
         if (gamepad2.right_trigger > 0.5) {
             robot.servoClose();
-        } else robot.servoprepare()
+        } else robot.servoPrepare();
         
         //arm move
         if (gamepad2.dpad_up) {
@@ -54,7 +54,7 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
         
         //Moves arm up
         if (gamepad2.right_stick_y > 0.3){
-           // robot.ArmUp(-0.5);
+           //robot.ArmUp(-0.5);
         }
         //Moves arm down
         if (gamepad2.right_stick_y < -0.3){
@@ -72,5 +72,5 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
 } 
 
 
-//men 
+//men men men menemenmenmenmenmene
 //yep
