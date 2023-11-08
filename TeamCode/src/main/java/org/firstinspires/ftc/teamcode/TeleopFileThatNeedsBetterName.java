@@ -40,26 +40,25 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
         robot.move( x, y, turn ); /*pls explain how this work ??*/
         
         
-
+        //claw move
         if (gamepad2.right_trigger > 0.5) {
-       //     robot.servoClose();
-      //  } else robot.servoPrepare();
-            //Moves arm down
-    
+            robot.servoClose();
+        } else robot.servoprepare()
+        
+        //arm move
         if (gamepad2.dpad_up) {
             robot.armMotor.setPower(1);
-        } else{
+        } else {
             robot.armMotor.setPower(0);
-        } 
-
-    
-    
-
+        }              
+        
+        //Moves arm up
         if (gamepad2.right_stick_y > 0.3){
-           // robot.ArmUp(0.5);
+           // robot.ArmUp(-0.5);
         }
+        //Moves arm down
         if (gamepad2.right_stick_y < -0.3){
-          //  robot.ArmDown(-0.5);
+          //  robot.ArmDown(0.5);
     
         }
         
@@ -70,6 +69,8 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
     
     }  
 
-} }
+} 
 
 
+//men 
+//yep
