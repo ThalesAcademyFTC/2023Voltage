@@ -320,11 +320,11 @@ public class Spark {
     }
 
     public void crabServoPinch() {
-        crabServo.setPosition( PINCH_ARM_POSITION );
+        crabServo.setPosition( PINCH_CLAW_POSITION );
     }
     
     public void crabServoUnPinch() {
-        crabServo.setPosition( UNPINCH_ARM_POSITION );
+        crabServo.setPosition( UNPINCH_CLAW_POSITION );
             
     }
 
