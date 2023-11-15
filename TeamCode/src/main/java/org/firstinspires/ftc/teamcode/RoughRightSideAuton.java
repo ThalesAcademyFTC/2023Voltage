@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Auton")
+@Autonomous(name="RoughRightSideAuton")
 @Disabled
-public class Auton extends LinearOpMode {
+public class RoughRightSideAuton extends LinearOpMode {
 
     private Spark robot;
 
