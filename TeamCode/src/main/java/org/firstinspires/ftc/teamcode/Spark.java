@@ -329,7 +329,117 @@ public class Spark {
     }
 
     // AUTON functions!
+    public void turnRightFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+        resetDriveEncoders();
 
+        for(DcMotor x: left){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(ticks);
+        }
+        for(DcMotor x: right){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(-ticks);
+        }
+
+        this.turnRight(speed);
+        waitForMotors();
+
+        resetDriveEncoders();
+    }
+
+    public void turnLeftFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+        resetDriveEncoders();
+
+        for(DcMotor x: left){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(-ticks);
+        }
+        for(DcMotor x: right){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(ticks);
+        }
+        this.turnLeft(speed);
+        waitForMotors();
+
+        resetDriveEncoders();
+    }
+
+    public void moveRightFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+
+        resetDriveEncoders();
+
+        for(DcMotor x: special){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(-ticks);
+        }
+
+        for(DcMotor x: unique){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(ticks);
+        }
+
+        this.moveRight(speed);
+
+        waitForMotors();
+
+        resetDriveEncoders();
+
+    }
+
+    public void moveLeftFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+
+        resetDriveEncoders();
+
+        for(DcMotor x: special){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(ticks);
+        }
+        for(DcMotor x: unique){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(-ticks);
+        }
+        this.moveLeft(speed);
+        waitForMotors();
+
+        resetDriveEncoders();
+
+    }
+
+    public void moveForwardFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+        resetDriveEncoders();
+
+        for(DcMotor x: forward){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(ticks);
+        }
+        this.moveForward(speed);
+        waitForMotors();
+
+        resetDriveEncoders();
+
+    }
+
+    public void moveBackwardFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+
+        resetDriveEncoders();
+
+        for(DcMotor x: forward){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(-ticks);
+        }
+        this.moveBackward(speed);
+
+        waitForMotors();
+
+        resetDriveEncoders();
+    }
+    
     public void moveDistance ( double x, double y, double turn, double distance ) {
 
         // Use encoder ticks to move in a certain direction. Somehow calculate the ticks needed.
