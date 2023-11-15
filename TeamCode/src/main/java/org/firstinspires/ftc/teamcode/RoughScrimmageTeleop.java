@@ -54,10 +54,10 @@ public class RoughScrimmageTeleop extends OpMode {
 
 
         //small arm
-        if ( gamepad2.right_bumper() ) {
+        if ( gamepad2.right_bumper ) {
             robot.smallArmDeposit();
 
-        } else if ( gamepad2.left_bumper() ) {
+        } else if ( gamepad2.left_bumper ) {
             robot.smallArmReset();
         
         }
