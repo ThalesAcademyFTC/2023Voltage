@@ -105,6 +105,11 @@
 
             ************************************************************* -->
             <Servo name="clawServo" port="0" />
+            <Servo name="crabServo" port="2" />
+            <Servo name="armMotor" port="1" />
+            
+            
+
 
         </LynxModule>
 
@@ -120,8 +125,11 @@
             ************************************************************* -->
 
             <goBILDA5202SeriesMotor name="armMotor" port="0" />
-            <goBILDA5202SeriesMotor name="spinnyMotor" port="3" />
-
+            <!-- poo poo pee pee
+            <Servo name="clawServo" port="0" />
+            <Servo name="crabServo" port="2" />
+            <Servo name="armMotor" port="1" /> 
+            -->
         </LynxModule>
     </LynxUsbDevice>
 </Robot>

@@ -26,7 +26,8 @@ public class Spark {
      * listed in the list inside {}
      */
     public enum Drivetrain {
-        MECHANUM
+        MECHANUM,
+        MISTRO
     }
 
     /**
@@ -52,7 +53,11 @@ public class Spark {
 
     public Servo smallArmServo;
 
+    public Servo crabServo;
+
     private IMU imu;
+
+    private IMU.Parameters parameters;
 
     // Put CONSTANTS here
 
@@ -61,8 +66,21 @@ public class Spark {
 
     /** Constant for the close claw position */
     static final double CLOSE_CLAW_POSITION = 0.3;
+    
+    /** Consant for small arm servo depositing position */
+    static final double DEPOSIT_ARM_POSITION = 0.5;
+    
+    /** Costant for resetting the small arm servo position */
+    static final double RESET_ARM_POSITION = 0;
 
+    /** Constant for pinching a pixel with the large arm */  
+    static final double PINCH_CLAW_POSITION = 0.7;
+
+    /** Constant for releasing a pixel with the large arm */
+    static final double UNPINCH_CLAW_POSITION = 0;
+       
     /** Encoder ticks for an INCH */
+
     static final double INCH_TICKS = 40;
 
     /**
@@ -111,7 +129,7 @@ public class Spark {
         switch ( drive ) {
 
             // If drive is MECHANUM, then everything in here will setup the MECHANUM hardware variables
-            case MECHANUM:
+            case MISTRO:
 
                 //First, setup the motors that are used for the drivetrain
                 motorFrontLeft = hwMap.dcMotor.get( "motorFrontLeft" );
@@ -131,7 +149,7 @@ public class Spark {
                 //Set parameters for the imu.
                 //Check the direction that the logo is facing.
                 //Check the direction that the USB plugs are facing
-                IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
+                parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
                         RevHubOrientationOnRobot.LogoFacingDirection.FORWARD,
                         RevHubOrientationOnRobot.UsbFacingDirection.LEFT)
                 );
@@ -143,8 +161,44 @@ public class Spark {
                 armMotor = hwMap.dcMotor.get( "armMotor" );
                 clawServo = hwMap.servo.get( "clawServo" );
                 smallArmServo = hwMap.servo.get( "smallArmServo" );
+                crabServo = hwMap.servo.get( "crabServo" );
+                
+                break;
 
-                spinnyMotor = hwMap.dcMotor.get( "spinnyMotor" );
+            case MECHANUM:
+
+                //First, setup the motors that are used for the drivetrain
+                motorFrontLeft = hwMap.dcMotor.get( "motorFrontLeft" );
+                motorFrontRight = hwMap.dcMotor.get( "motorFrontRight" );
+                motorBackLeft = hwMap.dcMotor.get( "motorBackLeft" );
+                motorBackRight = hwMap.dcMotor.get( "motorBackRight" );
+
+                //Next, reverse motors that need to spin the other direction
+                // Tip: All motors should move the robot forward if set to power 1
+                //motorBackLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+
+                //Here would go any additional hardware devices for the robot
+
+                // Map the imu to the hardware device
+                imu = hwMap.get( IMU.class, "imu" );
+
+                //Set parameters for the imu.
+                //Check the direction that the logo is facing.
+                //Check the direction that the USB plugs are facing
+                parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
+                        RevHubOrientationOnRobot.LogoFacingDirection.FORWARD,
+                        RevHubOrientationOnRobot.UsbFacingDirection.LEFT)
+                );
+
+                imu.initialize( parameters );
+
+                //Add arm mechanism hardware devices
+
+                armMotor = hwMap.dcMotor.get( "armMotor" );
+                clawServo = hwMap.servo.get( "clawServo" );
+                smallArmServo = hwMap.servo.get( "smallArmServo" );
+                crabServo = hwMap.servo.get( "crabServo" );
+                
 
 
 
@@ -243,6 +297,7 @@ public class Spark {
      * Closes the clawServo using the CONSTANT CLOSE_CLAW_POSITION
      * Defined near top of Spark
      */
+
     public void closeClaw() {
         clawServo.setPosition( CLOSE_CLAW_POSITION );
     }
@@ -255,12 +310,31 @@ public class Spark {
     public void setClawServo( double position ) {
         clawServo.setPosition( position );
     }
-     
+    
+    public void smallArmDeposit() {
+        smallArmServo.setPosition( DEPOSIT_ARM_POSITION );
+    }
+    
+    public void smallArmReset() {
+        smallArmServo.setPosition( RESET_ARM_POSITION );
+    }
+
+    public void crabServoPinch() {
+        crabServo.setPosition( PINCH_CLAW_POSITION );
+    }
+    
+    public void crabServoUnPinch() {
+        crabServo.setPosition( UNPINCH_CLAW_POSITION );
+            
+    }
+
     // AUTON functions!
 
     public void moveDistance ( double x, double y, double turn, double distance ) {
 
         // Use encoder ticks to move in a certain direction. Somehow calculate the ticks needed.
+
+
 
 
 

@@ -7,10 +7,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @TeleOp()
 
 
-public class TeleopFileThatNeedsBetterName extends OpMode {
+public class RoughScrimmageTeleop extends OpMode {
 
     Spark robot;
-    //explain strafe factor here
+    
+    /** Allows for driver customization of movement */
     static final double STRAFE_FACTOR = 1.1;
 
     @Override
@@ -53,30 +54,45 @@ public class TeleopFileThatNeedsBetterName extends OpMode {
 
 
         //small arm
-        if ( gamepad2.right_bumper() ) {
-            robot.smallArmServo(0.5);
-            
-      } else if ( gamepad2.left_bumper() ) {
-            robot.smallArmServo(-0.5);
+        if ( gamepad2.right_bumper ) {
+            robot.smallArmDeposit();
+
+        } else if ( gamepad2.left_bumper ) {
+            robot.smallArmReset();
         
         }
 
-        
-        //Moves arm up
+
+        //Moves large arm up
         if ( gamepad2.right_stick_y > 0.3 ){
-           robot.setArmMotor(0.5);
+           robot.setArmMotor( 0.5 );
         
         } else if ( gamepad2.right_stick_y < -0.3 ){
-            robot.setArmMotor(-0.5);
+            robot.setArmMotor( -0.5 );
         
         }
 
+        if (gamepad2.a) {
+            robot.crabServoPinch();   
+            
+        } else if (gamepad2.y) {
+            robot.crabServoUnPinch();
+        }
+/*
+        if (gamepad2.x) {
+            robot.armMotor(0.5);
+        } else if (gamepad2.b) {
+            robot.armMotor(-0.5);
+    }
 
-
+*/
 //keep this at end
         if (gamepad1.atRest()) robot.rest();
     
     }  
 
 }
-//among us 
+<<<<<<< HEAD
+=======
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                //For Billy Dignam. Bless his soul. :) ඞ
+>>>>>>> 4852fc1b585f4c18d2976319ec5384e22000db12
