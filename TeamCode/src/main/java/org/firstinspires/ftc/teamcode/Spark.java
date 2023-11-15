@@ -328,7 +328,7 @@ public class Spark {
             
     }
 
-    // AUTON functions!
+    /* AUTON functions!
     public void turnRightFT(int ticks, double speed) {
         //Blocks until the robot has gotten to the desired location.
         resetDriveEncoders();
@@ -439,7 +439,8 @@ public class Spark {
 
         resetDriveEncoders();
     }
-    
+    */
+
     public void moveDistance ( double x, double y, double turn, double distance ) {
 
         // Use encoder ticks to move in a certain direction. Somehow calculate the ticks needed.
