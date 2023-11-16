@@ -105,8 +105,8 @@
 
             ************************************************************* -->
             <Servo name="clawServo" port="0" />
+            <Servo name="smallArmServo" port="1" />
             <Servo name="crabServo" port="2" />
-            <Servo name="armMotor" port="1" />
             
             
 
