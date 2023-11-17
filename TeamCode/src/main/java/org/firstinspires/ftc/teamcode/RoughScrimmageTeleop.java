@@ -65,10 +65,10 @@ public class RoughScrimmageTeleop extends OpMode {
 
         //Moves large arm up
         if ( gamepad2.right_stick_y > 0.3 ){
-           robot.setArmMotor( 0.3 );
+           robot.setArmMotor( 0.65 );
         
         } else if ( gamepad2.right_stick_y < -0.3 ){
-            robot.setArmMotor( -0.3 );
+            robot.setArmMotor( -0.65 );
         
         }
 

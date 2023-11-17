@@ -62,7 +62,7 @@ public class Spark {
     // Put CONSTANTS here
 
     /** Constant for the claw open position */
-    static final double OPEN_CLAW_POSITION = 0.25;
+    static final double OPEN_CLAW_POSITION = 0.5;
 
     /** Constant for the close claw position */
     static final double CLOSE_CLAW_POSITION = 0;
