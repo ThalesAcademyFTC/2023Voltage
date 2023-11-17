@@ -34,7 +34,7 @@ public class RoughScrimmageTeleop extends OpMode {
 
 
         //First, define some key variables for movement
-        double y = -gamepad1.left_stick_y; // Y gamepad is reversed, so reverse this value
+        double y = gamepad1.left_stick_y; // Y gamepad is reversed, so reverse this value
         double x = gamepad1.left_stick_x * STRAFE_FACTOR; // Scaling to fix
         double turn = gamepad1.right_stick_x; // Turn value
        

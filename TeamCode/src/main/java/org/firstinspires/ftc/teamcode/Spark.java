@@ -244,9 +244,9 @@ public class Spark {
                 double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(turn), 1);
 
                 // Save values for the power of each motor
-                double frontLeftPower = ( y + x + turn ) / denominator;
-                double backLeftPower = ( y - x + turn ) / denominator;
-                double frontRightPower = ( y - x - turn ) / denominator;
+                double frontLeftPower = ( y - x - turn ) / denominator;
+                double backLeftPower = ( - y + x - turn ) / denominator;
+                double frontRightPower = ( - y - x - turn ) / denominator;
                 double backRightPower = ( y + x - turn ) / denominator;
 
                 //Now, assign that motor power to each motor
