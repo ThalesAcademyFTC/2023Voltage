@@ -62,16 +62,16 @@ public class Spark {
     // Put CONSTANTS here
 
     /** Constant for the claw open position */
-    static final double OPEN_CLAW_POSITION = 0.6;
+    static final double OPEN_CLAW_POSITION = 0.25;
 
     /** Constant for the close claw position */
-    static final double CLOSE_CLAW_POSITION = 0.3;
+    static final double CLOSE_CLAW_POSITION = 0;
     
     /** Consant for small arm servo depositing position */
-    static final double DEPOSIT_ARM_POSITION = 0.5;
+    static final double DEPOSIT_ARM_POSITION = -1;
     
     /** Costant for resetting the small arm servo position */
-    static final double RESET_ARM_POSITION = 0;
+    static final double RESET_ARM_POSITION = 0.78;
 
     /** Constant for pinching a pixel with the large arm */  
     static final double PINCH_CLAW_POSITION = 0.7;

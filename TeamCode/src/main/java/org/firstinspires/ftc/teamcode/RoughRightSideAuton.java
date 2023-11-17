@@ -21,7 +21,7 @@ public class RoughRightSideAuton extends LinearOpMode {
         waitForStart();
 
         //Code for auton goes here
-        robot.moveRightFT(1200,0.5);
+      //  robot.moveRightFT(1200,0.5);
        
         while (opModeIsActive() && runtime.milliseconds() > 30000){
             //If you want to use a loop, here's an example

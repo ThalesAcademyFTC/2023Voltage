@@ -113,7 +113,7 @@
 
         </LynxModule>
 
-        <LynxModule name="Expansion Hub 3" port="3">
+        <LynxModule name="Expansion Hub 2" port="3">
 
             <!-- *************************************************************
 
@@ -125,7 +125,7 @@
             ************************************************************* -->
 
             <goBILDA5202SeriesMotor name="armMotor" port="0" />
-            <!-- poo poo pee pee
+            <!--
             <Servo name="clawServo" port="0" />
             <Servo name="crabServo" port="2" />
             <Servo name="armMotor" port="1" /> 
