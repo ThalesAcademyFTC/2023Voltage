@@ -70,9 +70,9 @@
 
             ************************************************************* -->
 
-            <goBILDA5202SeriesMotor name="motorFrontLeft" port="0" />
-            <goBILDA5202SeriesMotor name="motorFrontRight" port="3" />
-            <goBILDA5202SeriesMotor name="motorBackLeft" port="2" />
+            <goBILDA5202SeriesMotor name="motorFrontLeft" port="2" />
+            <goBILDA5202SeriesMotor name="motorFrontRight" port="0" />
+            <goBILDA5202SeriesMotor name="motorBackLeft" port="3" />
             <goBILDA5202SeriesMotor name="motorBackRight" port="1" />
 
             <!--
