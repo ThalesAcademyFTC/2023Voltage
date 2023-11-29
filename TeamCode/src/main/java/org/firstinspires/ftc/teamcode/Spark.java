@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -19,6 +20,8 @@ public class Spark {
      * name set in the configuration
      */
     private HardwareMap hwMap;
+
+    LinearOpMode auton;
           
     /**
      * An ENUM is a custom variable type that we can define the options for
@@ -47,6 +50,8 @@ public class Spark {
 
     public DcMotor motorFrontLeft, motorFrontRight, motorBackLeft, motorBackRight;
 
+    public DcMotor[] allDriveMotors;
+
     public DcMotor armMotor, spinnyMotor;
 
     public Servo clawServo;
@@ -62,16 +67,16 @@ public class Spark {
     // Put CONSTANTS here
 
     /** Constant for the claw open position */
-    static final double OPEN_CLAW_POSITION = 0.6;
+    static final double OPEN_CLAW_POSITION = 0.5;
 
     /** Constant for the close claw position */
-    static final double CLOSE_CLAW_POSITION = 0.3;
+    static final double CLOSE_CLAW_POSITION = 0;
     
     /** Consant for small arm servo depositing position */
-    static final double DEPOSIT_ARM_POSITION = 0.5;
+    static final double DEPOSIT_ARM_POSITION = -1;
     
     /** Costant for resetting the small arm servo position */
-    static final double RESET_ARM_POSITION = 0;
+    static final double RESET_ARM_POSITION = 0.78;
 
     /** Constant for pinching a pixel with the large arm */  
     static final double PINCH_CLAW_POSITION = 0.7;
@@ -79,9 +84,17 @@ public class Spark {
     /** Constant for releasing a pixel with the large arm */
     static final double UNPINCH_CLAW_POSITION = 0;
        
-    /** Encoder ticks for an INCH */
+    /**
+     * Encoder ticks for an INCH moving FORWARD and BACKWARD
+     * A good way to get this value is to run a test auton that moves forward for 500? ticks and then measure the distance.
+     */
+    static final double Y_INCH_TICKS = 40;
 
-    static final double INCH_TICKS = 40;
+    /**
+     * Encoder ticks for an INCH moving FORWARD and BACKWARD
+     * A good way to get this value is to run a test auton that moves left for 500? ticks and then measure the distance.
+     */
+    static final double X_INCH_TICKS = 40;
 
     /**
      * The CONSTRUCTOR for the library class. This constructor pulls the HardwareMap from the opmode
@@ -101,6 +114,25 @@ public class Spark {
         // Run the setupHardware function to map variables to their hardware object
         setupHardware();
 
+    }
+
+    public Spark(LinearOpMode opmode, Drivetrain type) {
+
+        //Set the auton opmode directly to the opmode object.
+        //Objects can be passed in to functions, so this object will be updated live.
+        this.auton = opmode;
+
+        //Sets the hardwareMap
+        hwMap = opmode.hardwareMap;
+
+        //Sets the telemetry
+        telem = opmode.telemetry;
+
+        //Sets the drivetrain
+        drive = type;
+
+        //Run setHardwareMap function to map variables to their hardware object.
+        setupHardware();
     }
 
     /**
@@ -162,6 +194,8 @@ public class Spark {
                 clawServo = hwMap.servo.get( "clawServo" );
                 smallArmServo = hwMap.servo.get( "smallArmServo" );
                 crabServo = hwMap.servo.get( "crabServo" );
+
+                allDriveMotors = new DcMotor[]{ motorFrontLeft, motorFrontRight, motorBackLeft, motorBackRight };
                 
                 break;
 
@@ -198,7 +232,6 @@ public class Spark {
                 clawServo = hwMap.servo.get( "clawServo" );
                 smallArmServo = hwMap.servo.get( "smallArmServo" );
                 crabServo = hwMap.servo.get( "crabServo" );
-                
 
 
 
@@ -240,13 +273,13 @@ public class Spark {
 
                 // Denominator is the largest motor power (absolute value) or 1
                 // This ensures all the powers maintain the same ratio, but only when
-                // at least one is out of the range [-1, 1]
+                // at least one is out of the range [-1, 1]`
                 double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(turn), 1);
 
                 // Save values for the power of each motor
-                double frontLeftPower = ( y + x + turn ) / denominator;
-                double backLeftPower = ( y - x + turn ) / denominator;
-                double frontRightPower = ( y - x - turn ) / denominator;
+                double frontLeftPower = ( y - x - turn ) / denominator;
+                double backLeftPower = ( - y + x - turn ) / denominator;
+                double frontRightPower = ( - y - x - turn ) / denominator;
                 double backRightPower = ( y + x - turn ) / denominator;
 
                 //Now, assign that motor power to each motor
@@ -270,11 +303,11 @@ public class Spark {
     }
 
     /**
-     * Gets the yaw heading in RADIANS
-     * @return the yaw heading in radians
+     * Gets the yaw heading in degrees
+     * @return the yaw heading in degrees
      */
     public double getHeading() {
-        return imu.getRobotYawPitchRollAngles().getYaw( AngleUnit.RADIANS );
+        return imu.getRobotYawPitchRollAngles().getYaw( AngleUnit.DEGREES );
     }
 
     /**
@@ -328,16 +361,167 @@ public class Spark {
             
     }
 
-    // AUTON functions!
+    /* AUTON functions!
+    public void turnRightFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+        resetDriveEncoders();
 
-    public void moveDistance ( double x, double y, double turn, double distance ) {
+        for(DcMotor x: left){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(ticks);
+        }
+        for(DcMotor x: right){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(-ticks);
+        }
 
-        // Use encoder ticks to move in a certain direction. Somehow calculate the ticks needed.
+        this.turnRight(speed);
+        waitForMotors();
 
+        resetDriveEncoders();
+    }
 
+    public void turnLeftFT(int ticks, double speed) {
+        //Blocks until the robot has gotten to the desired location.
+        resetDriveEncoders();
 
+        for(DcMotor x: left){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(-ticks);
+        }
+        for(DcMotor x: right){
+            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            x.setTargetPosition(ticks);
+        }
+        this.turnLeft(speed);
+        waitForMotors();
 
+        resetDriveEncoders();
+    }
+    */
 
+    public void turnRightInches( double degrees, double speed ) {
+
+        //If this is turning in the wrong direction, swap the + to a - below
+        double target = getHeading() + degrees;
+
+        // Degree of error allowed for degrees. If set to 0.5, the robot could be 1 degree off.
+        final double DEGREE_OF_ERROR = 0.5;
+
+        // Set motors to turn right power
+        move( 0, 0, speed );
+
+        // Loop while opmode is active and heading is not within desired rate.
+        while( auton.opModeIsActive() && !auton.isStopRequested()
+                && (getHeading() >= target + DEGREE_OF_ERROR || getHeading() <= target + DEGREE_OF_ERROR ) ) {
+            // Keep looping until it reaches near target
+        }
+
+        //Once it is near target, rest.
+        rest();
+
+    }
+
+    public void turnLeftInches( double degrees, double speed ) {
+
+        //haha, I am using another function so I don't have to rewrite the code.
+        turnRightInches( -degrees, -speed );
+
+    }
+
+    public void moveForwardInches( double inches, double speed ) {
+
+        // Converts to integer by rounding. CASTS to int after rounding
+        int tickTarget = (int)Math.round( inches * Y_INCH_TICKS );
+
+        prepareEncoders();
+
+        for( DcMotor x: allDriveMotors ) {
+
+            x.setTargetPosition( tickTarget );
+
+        }
+
+        // Move forward. Think of this like a coordinate plane :)
+        move( 0, speed, 0 );
+
+        // Wait for motors to reach the desired tick level
+        waitForMotors();
+
+        // Reset motors for normal movement
+        resetDriveEncoders();
+
+    }
+
+    public void moveBackwardInches( double inches, double speed ) {
+
+        // haha, I am using another function so I don't have to rewrite the code.
+        moveForwardInches( -inches, -speed );
+
+    }
+
+    public void moveRightInches( double inches, double speed ) {
+
+        // Converts to integer by rounding. CASTS to int after rounding
+        int tickTarget = (int)Math.round( inches * X_INCH_TICKS );
+
+        prepareEncoders();
+
+        for( DcMotor x: allDriveMotors ) {
+
+            x.setTargetPosition( tickTarget );
+
+        }
+
+        // Move right. Think of this like a coordinate plane :)
+        move( speed, 0, 0 );
+
+        // Wait for motors to reach the desired tick level
+        waitForMotors();
+
+        // Reset motors for normal movement
+        resetDriveEncoders();
+
+    }
+
+    public void moveLeftInches( double inches, double speed ) {
+
+        // haha, I am using another function so I don't have to rewrite the code.
+        moveRightInches( -inches, -speed );
+
+    }
+
+    public void waitForMotors(){ // This method safely loops while checking if the opmode is active.
+        boolean finished = false;
+        while (auton.opModeIsActive() && !finished && !auton.isStopRequested()) {
+            for (DcMotor x : allDriveMotors) {
+                if (x.getCurrentPosition() >= x.getTargetPosition() + 2 || x.getCurrentPosition() <= x.getTargetPosition() - 2) {
+                    telem.addData("motor1", motorFrontLeft.getCurrentPosition());
+                    telem.addData("motor2", motorFrontRight.getCurrentPosition());
+                    telem.addData("motor3", motorBackLeft.getCurrentPosition());
+                    telem.addData("motor4", motorBackRight.getCurrentPosition());
+                    telem.update();
+                } else {
+                    finished = true;
+                }
+            }
+        }
+    }
+
+    public void resetDriveEncoders(){
+        for (DcMotor x : allDriveMotors) {
+            x.setPower(0);
+            x.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            x.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        }
+    }
+
+    public void prepareEncoders(){
+        for (DcMotor x : allDriveMotors) {
+            x.setPower(0);
+            x.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            x.setMode( DcMotor.RunMode.RUN_TO_POSITION );
+        }
     }
 
 

@@ -70,9 +70,9 @@
 
             ************************************************************* -->
 
-            <goBILDA5202SeriesMotor name="motorFrontLeft" port="0" />
-            <goBILDA5202SeriesMotor name="motorFrontRight" port="3" />
-            <goBILDA5202SeriesMotor name="motorBackLeft" port="2" />
+            <goBILDA5202SeriesMotor name="motorFrontLeft" port="2" />
+            <goBILDA5202SeriesMotor name="motorFrontRight" port="0" />
+            <goBILDA5202SeriesMotor name="motorBackLeft" port="3" />
             <goBILDA5202SeriesMotor name="motorBackRight" port="1" />
 
             <!--
@@ -105,15 +105,15 @@
 
             ************************************************************* -->
             <Servo name="clawServo" port="0" />
+            <Servo name="smallArmServo" port="1" />
             <Servo name="crabServo" port="2" />
-            <Servo name="armMotor" port="1" />
             
             
 
 
         </LynxModule>
 
-        <LynxModule name="Expansion Hub 3" port="3">
+        <LynxModule name="Expansion Hub 2" port="3">
 
             <!-- *************************************************************
 
@@ -125,7 +125,7 @@
             ************************************************************* -->
 
             <goBILDA5202SeriesMotor name="armMotor" port="0" />
-            <!-- poo poo pee pee
+            <!--
             <Servo name="clawServo" port="0" />
             <Servo name="crabServo" port="2" />
             <Servo name="armMotor" port="1" /> 
