@@ -91,12 +91,4 @@ public class RoughScrimmageTeleop extends OpMode {
     
     }  
 
-}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                //For Billy Dignam. Bless his soul. :) ඞ
->>>>>>> 4852fc1b585f4c18d2976319ec5384e22000db12
-=======
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                //For Billy Dignam. Bless his soul. :) ඞ
->>>>>>> 4852fc1b585f4c18d2976319ec5384e22000db12
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               //For Billy Dignam. Bless his soul. :)

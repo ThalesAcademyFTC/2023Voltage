@@ -400,7 +400,7 @@ public class Spark {
     }
     */
 
-    public void turnRightInches( double degrees, double speed ) {
+    public void turnRightDegrees( double degrees, double speed ) {
 
         //If this is turning in the wrong direction, swap the + to a - below
         double target = getHeading() + degrees;
@@ -422,7 +422,7 @@ public class Spark {
 
     }
 
-    public void turnLeftInches( double degrees, double speed ) {
+    public void turnLeftDegrees( double degrees, double speed ) {
 
         //haha, I am using another function so I don't have to rewrite the code.
         turnRightInches( -degrees, -speed );

@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="RoughLeftSideAuton")
+@Autonomous(name="RoughLongLeftSideAuton")
 @Disabled
 public class RoughLeftSideAuton extends LinearOpMode {
 
@@ -36,7 +36,7 @@ public class RoughLeftSideAuton extends LinearOpMode {
         robot.turnLeftDegrees(90, speed * 3/2);         
         robot.sleep(rest);
             
-        robot.moveForwardInches(24 , speed); 
+        robot.moveForwardInches(50 , speed); 
         robot.sleep(rest);
         
         robot.moveRightInches(24 , speed);  

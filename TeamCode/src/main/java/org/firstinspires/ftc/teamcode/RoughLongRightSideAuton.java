@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="RoughRightSideAuton")
+@Autonomous(name="RoughLongRightSideAuton")
 @Disabled
 public class RoughRightSideAuton extends LinearOpMode {
 
@@ -46,7 +46,7 @@ public class RoughRightSideAuton extends LinearOpMode {
         robot.turnRightDegrees(90, 0.75);
         robot.rest(rest);
 
-        robot.moveForwardInches(24, speed);
+        robot.moveForwardInches(50, speed);
         robot.rest(rest);
 
         robot.moveRightInches(24, speed);
@@ -75,8 +75,6 @@ public class RoughRightSideAuton extends LinearOpMode {
         robot.rest(rest);
 
         robot.moveForwardInches(18, speed);
-
-        /end 
 
         while (opModeIsActive() && runtime.milliseconds() > 30000){
             //If you want to use a loop, here's an example
