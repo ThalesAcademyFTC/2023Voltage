@@ -25,8 +25,8 @@ public class RoughRightSideAuton extends LinearOpMode {
         double speed = 0.5;
         int rest = 100;
 
-        //robot moves forward, scans for the spike mark, and places purple pixel
-        //more code needed where indicated
+        //code below makes the robot move forward, scan for the spike mark, and places purple pixel
+        //more code needed where indicated 
 
         robot.moveForwardInches(12, speed);
         robot.rest(rest);
@@ -38,8 +38,7 @@ public class RoughRightSideAuton extends LinearOpMode {
         robot rests*/
 
 
-        //robot moves back and approaches backboard
-
+        //robot moves back and approaches backboard:
         robot.moveBackwardInches(9, speed);
         robot.rest(rest);
 
@@ -56,27 +55,29 @@ public class RoughRightSideAuton extends LinearOpMode {
         //robot scans for the right april tag, moves forward to the right position, and places the yellow pixel
         //more code needed where indicated
 
-        //robot scans for the right april tag
+        //code for robot scans for the right april tag here
+        
         robot.rest(rest);
 
         robot.moveForwardInches(6, speed);
         robot.rest(rest);
 
-        //robot turns to the right position
+        //code for positioning to place
+        
         robot.rest(rest);
 
-        //robot places yellow pixel
+        //code for placing yellow pixel here 
+
         robot.rest(rest);
 
 
-        //robot then moves into the parking area
-
+        //robot then moves into the parking area:
         robot.moveLeftInches(24, speed);
         robot.rest(rest);
 
         robot.moveForwardInches(18, speed);
 
-        /end 
+        //end
 
         while (opModeIsActive() && runtime.milliseconds() > 30000){
             //If you want to use a loop, here's an example

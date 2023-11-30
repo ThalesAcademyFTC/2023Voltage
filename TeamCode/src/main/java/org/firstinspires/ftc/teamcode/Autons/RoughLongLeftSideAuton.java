@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="RoughLeftSideAuton")
+@Autonomous(name="RoughLongLeftSideAuton")
 @Disabled
-public class RoughLeftSideAuton extends LinearOpMode {
+public class RoughLongLeftSideAuton extends LinearOpMode {
 
     private Spark robot;
 
@@ -19,16 +19,25 @@ public class RoughLeftSideAuton extends LinearOpMode {
         runtime.reset();
 
         waitForStart();
+
+        //variables for auton
   
         double speed = 0.5;
         int rest = 100;
 
-        //Code for auton
-        robot.moveForwardInches(12 , speed);   //robot scans for the team spike mark
-           
-        
-        //place purple pixel
+        //robot moves forward, scans for the spike mark, and places purple pixel
+        //more code needed where indicated
+
+        robot.moveForwardInches(12 , speed);   
         robot.sleep(rest); 
+
+        /*robot scans for spike mark
+        robot rests
+
+        robot places purple pixel
+        robot rests*/
+
+        //robot moves back and approaches backboard
                
         robot.moveBackwardInches(9, speed);    
         robot.sleep(rest);
@@ -36,17 +45,29 @@ public class RoughLeftSideAuton extends LinearOpMode {
         robot.turnLeftDegrees(90, speed * 3/2);         
         robot.sleep(rest);
             
-        robot.moveForwardInches(24 , speed); 
+        robot.moveForwardInches(50 , speed); 
         robot.sleep(rest);
         
         robot.moveRightInches(24 , speed);  
         robot.sleep(rest);
-        
+
+
+        //robot scans for the right april tag, moves forward to the right position, and places the yellow pixel
+        //more code needed where indicated
+
+        //robot scans for the right april tag
+        robot.rest(rest);
+
         robot.moveForwardInches(6, speed);
         robot.sleep(rest);
+
+        //robot turns to the right position
+        robot.rest(rest);
         
         //place the  yellow pixel
         robot.sleep(rest);
+
+        //robot then moves into the parking area
 
         robot.moveLeftInches(24 , speed * 3/2);
         robot.sleep(rest);

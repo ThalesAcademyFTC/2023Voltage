@@ -361,45 +361,6 @@ public class Spark {
             
     }
 
-    /* AUTON functions!
-    public void turnRightFT(int ticks, double speed) {
-        //Blocks until the robot has gotten to the desired location.
-        resetDriveEncoders();
-
-        for(DcMotor x: left){
-            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            x.setTargetPosition(ticks);
-        }
-        for(DcMotor x: right){
-            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            x.setTargetPosition(-ticks);
-        }
-
-        this.turnRight(speed);
-        waitForMotors();
-
-        resetDriveEncoders();
-    }
-
-    public void turnLeftFT(int ticks, double speed) {
-        //Blocks until the robot has gotten to the desired location.
-        resetDriveEncoders();
-
-        for(DcMotor x: left){
-            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            x.setTargetPosition(-ticks);
-        }
-        for(DcMotor x: right){
-            x.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            x.setTargetPosition(ticks);
-        }
-        this.turnLeft(speed);
-        waitForMotors();
-
-        resetDriveEncoders();
-    }
-    */
-
     public void turnRightDegrees( double degrees, double speed ) {
 
         //If this is turning in the wrong direction, swap the + to a - below

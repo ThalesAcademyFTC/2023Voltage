@@ -44,7 +44,7 @@ public class RoughScrimmageTeleop extends OpMode {
         robot.move( x, y, turn);
         
         //Claw open/close
-        if (gamepad2.right_trigger > 0) {
+        if (gamepad2.right_trigger > 0.25) {
             robot.openClaw();
         
         } else if (gamepad2.left_trigger < 1) {
