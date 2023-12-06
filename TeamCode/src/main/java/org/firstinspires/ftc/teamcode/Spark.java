@@ -52,7 +52,7 @@ public class Spark {
 
     public DcMotor[] allDriveMotors;
 
-    public DcMotor armMotor, spinnyMotor;
+    public DcMotor armMotor, spinnyMotor, motorSuspend;
 
     public Servo clawServo;
 
@@ -194,6 +194,7 @@ public class Spark {
                 clawServo = hwMap.servo.get( "clawServo" );
                 smallArmServo = hwMap.servo.get( "smallArmServo" );
                 crabServo = hwMap.servo.get( "crabServo" );
+                motorSuspend = hwMap.dcMotor.get( "motorSuspend" );
 
                 allDriveMotors = new DcMotor[]{ motorFrontLeft, motorFrontRight, motorBackLeft, motorBackRight };
                 

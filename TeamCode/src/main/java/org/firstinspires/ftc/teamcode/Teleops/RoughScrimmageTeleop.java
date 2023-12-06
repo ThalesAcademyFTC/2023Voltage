@@ -78,6 +78,20 @@ public class RoughScrimmageTeleop extends OpMode {
         } else if (gamepad2.y) {
             robot.crabServoUnPinch();
         }
+
+
+        //robot hangs himself
+        if (gamepad2.x) {
+            motorSuspend.setPower(0.2);
+            
+        //robot desuspends
+        } else if (gamepad2.b) {
+            motorsuspend.setPower(-0.2);
+        
+        } else {
+            motorsuspend.setPower(0);
+            
+        }
 /*
         if (gamepad2.x) {
             robot.armMotor(0.5);
