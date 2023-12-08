@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.opmodes;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -10,7 +10,7 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 import java.util.List;
 
 @Autonomous()
-public class SimpleAprilTags extends OpMode {
+public class AprilTagAutonTest extends OpMode {
     private AprilTagProcessor aprilTagProcessor;
     private VisionPortal visionPortal;
 
@@ -28,7 +28,7 @@ public class SimpleAprilTags extends OpMode {
 
         for (AprilTagDetection detection : currentDetections) {
             idsFound.append(detection.id);
-            idsFound.append(’ ’);
+            idsFound.append(" ");
         }
 
         telemetry.addData("April Tags", idsFound);
