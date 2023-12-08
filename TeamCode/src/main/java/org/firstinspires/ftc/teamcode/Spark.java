@@ -319,6 +319,10 @@ public class Spark {
         armMotor.setPower( power );
     }
 
+    public void setMotorSuspend( double power ) {
+        motorSuspend.setPower( power );
+    }
+
     /**
      * Opens the clawServo using the CONSTANT OPEN_CLAW_POSITION
      * Defined near top of Spark
@@ -387,7 +391,7 @@ public class Spark {
     public void turnLeftDegrees( double degrees, double speed ) {
 
         //haha, I am using another function so I don't have to rewrite the code.
-        turnRightInches( -degrees, -speed );
+        turnRightDegrees( -degrees, -speed );
 
     }
 
@@ -485,7 +489,6 @@ public class Spark {
             x.setMode( DcMotor.RunMode.RUN_TO_POSITION );
         }
     }
-
 
 
 }

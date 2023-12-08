@@ -80,16 +80,16 @@ public class RoughScrimmageTeleop extends OpMode {
         }
 
 
-        //robot hangs himself
+        //robot suspend
         if (gamepad2.x) {
-            motorSuspend.setPower(0.2);
+            robot.setMotorSuspend(0.2);
             
         //robot desuspends
         } else if (gamepad2.b) {
-            motorsuspend.setPower(-0.2);
+            robot.setMotorSuspend(-0.2);
         
         } else {
-            motorsuspend.setPower(0);
+            robot.setMotorSuspend(0);
             
         }
 /*
