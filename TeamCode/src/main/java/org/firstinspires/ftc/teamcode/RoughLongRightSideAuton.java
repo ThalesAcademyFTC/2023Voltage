@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="RoughLongRightSideAuton")
 @Disabled
-public class RoughRightSideAuton extends LinearOpMode {
+public class RoughLongRightSideAuton extends LinearOpMode {
 
     private Spark robot;
 
@@ -29,7 +29,7 @@ public class RoughRightSideAuton extends LinearOpMode {
         //more code needed where indicated
 
         robot.moveForwardInches(12, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         /*robot scans for spike mark
         robot rests
@@ -41,38 +41,38 @@ public class RoughRightSideAuton extends LinearOpMode {
         //robot moves back and approaches backboard
 
         robot.moveBackwardInches(9, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.turnRightDegrees(90, 0.75);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveForwardInches(50, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveRightInches(24, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
 
         //robot scans for the right april tag, moves forward to the right position, and places the yellow pixel
         //more code needed where indicated
 
         //robot scans for the right april tag
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveForwardInches(6, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         //robot turns to the right position
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         //robot places yellow pixel
-        robot.rest(rest);
+        //robot.sleep(rest);
 
 
         //robot then moves into the parking area
 
         robot.moveLeftInches(24, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveForwardInches(18, speed);
 

@@ -29,7 +29,7 @@ public class RoughRightSideAuton extends LinearOpMode {
         //more code needed where indicated 
 
         robot.moveForwardInches(12, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         /*robot scans for spike mark
         robot rests
@@ -40,16 +40,16 @@ public class RoughRightSideAuton extends LinearOpMode {
 
         //robot moves back and approaches backboard:
         robot.moveBackwardInches(9, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.turnRightDegrees(90, 0.75);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveForwardInches(24, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveRightInches(24, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
 
         //robot scans for the right april tag, moves forward to the right position, and places the yellow pixel
@@ -57,23 +57,23 @@ public class RoughRightSideAuton extends LinearOpMode {
 
         //code for robot scans for the right april tag here
         
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveForwardInches(6, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         //code for positioning to place
         
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         //code for placing yellow pixel here 
 
-        robot.rest(rest);
+        //robot.sleep(rest);
 
 
         //robot then moves into the parking area:
         robot.moveLeftInches(24, speed);
-        robot.rest(rest);
+        //robot.sleep(rest);
 
         robot.moveForwardInches(18, speed);
 
