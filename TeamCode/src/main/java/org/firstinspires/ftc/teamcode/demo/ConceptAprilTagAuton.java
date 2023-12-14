@@ -50,7 +50,7 @@ import java.util.List;
  */
 @Autonomous(name = "Concept: AprilTagAuton", group = "Concept")
 @Disabled
-public class ConceptAprilTag extends LinearOpMode {
+public class ConceptAprilTagAuton extends LinearOpMode {
 
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
 
